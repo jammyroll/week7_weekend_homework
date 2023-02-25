@@ -10,14 +10,16 @@ const QuoteContainer = ()=>{
         'Accept': 'application/json',
         'Authorization': 'Bearer WbgnNsMFcCYhGH9-ZOtX'
       }
-      const fetchData = async () => {
-        const rawQuotes = await fetch('https://the-one-api.dev/v2/quote', {
-          headers: headers
-        })
-        const fullquotes = await rawQuotes.json();
-        const quotes = fullquotes.docs;
-        setQuotes(quotes)
-      };
+
+const fetchData = function (){
+    fetch('https://the-one-api.dev/v2/quote', {
+        headers: headers
+      })
+      .then(res => res.json())
+      .then (quotes => setQuotes( quotes.docs))
+
+}
+
   
       fetchData();
     }, []);
